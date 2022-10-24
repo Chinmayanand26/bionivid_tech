@@ -2,7 +2,7 @@
 # Bionivid-technical-assessment
 
 # This is the submission of technical assessment round
-# It is done and submitted by Mihir Joshi TYBCA MIT World Peace University
+# It is done and submitted by Chinmay Anand TYBCA MIT World Peace University
 
 All the files are in commited to the **main branch** of this particular repository 
 
