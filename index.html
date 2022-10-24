@@ -1,0 +1,133 @@
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Bionivid Data</title>
+
+	<!-- INCLUDING JQUERY-->
+	<script src=
+"https://code.jquery.com/jquery-3.5.1.js">
+	</script>
+
+	<!-- CSS FOR STYLING THE PAGE -->
+	<style>
+		table {
+			margin: 0 auto;
+			font-size: large;
+			border: 1px solid black;
+		}
+
+		h1 {
+			text-align: center;
+			color: black;
+			font-size: xx-large;
+			font-family: 'Gill Sans',
+				'Gill Sans MT', ' Calibri',
+				'Trebuchet MS', 'sans-serif';
+		}
+
+		td {
+			background-color: lightcyan;
+			border: 1px solid black;
+		}
+
+		th,
+		td {
+			font-weight: bold;
+			border: 1px solid black;
+			padding: 10px;
+			text-align: center;
+		}
+
+		td {
+			font-weight: lighter;
+		}
+	</style>
+</head>
+
+<body>
+
+	<section>
+		<h1>DATABASE</h1>
+
+		<!-- TABLE CONSTRUCTION-->
+		<table id='table'>
+			<!-- HEADING FORMATION -->
+			<tr>
+        <th>Sample Name</th>
+				<th>Percent Fails</th>
+				<th>% Dups</th>
+				<th>% GC</th>
+				<th>Total Sequences</th>
+        <th>Avg Sequence Length</th>
+			</tr>
+      
+
+			<script>
+				$(document).ready(function () {
+
+					// FETCHING DATA FROM JSON FILE
+					$.getJSON("test.json",
+							function (data) {
+						var myData = '';
+
+						// ITERATING THROUGH OBJECTS
+						$.each(data, function (key, value) {
+
+							//CONSTRUCTION OF ROWS HAVING
+							// DATA FROM JSON OBJECT
+							myData+= '<tr>';
+              myData+= '<td>' +
+								value[0].sample_name+ '</td>'; 
+              
+							myData+= '<td>' +
+								value[0].percent_fails+ '</td>';
+
+							myData += '<td>' +
+								value[0].percent_duplicates+ '</td>';
+
+							myData += '<td>' +
+								value[0].percent_gc+ '</td>';
+
+							myData += '<td>' +
+								value[0].total_sequences+ '</td>';
+
+              myData+= '<td>' +
+								value[0].avg_sequence_length+ '</td>';
+
+
+							myData += '</tr>';
+
+              // fetching row 2
+              myData+= '<tr>';
+              myData+= '<td>' +
+								value[1].sample_name+ '</td>';
+              
+							myData+= '<td>' +
+								value[1].percent_fails+ '</td>';
+
+							myData += '<td>' +
+								value[1].percent_duplicates+ '</td>';
+
+							myData += '<td>' +
+								value[1].percent_gc+ '</td>';
+
+							myData += '<td>' +
+								value[1].total_sequences+ '</td>';
+
+              myData+= '<td>' +
+								value[1].avg_sequence_length+ '</td>';
+
+							myData += '</tr>';
+
+              
+						});
+						
+						//INSERTING ROWS INTO TABLE
+						$('#table').append(myData);
+					});
+				});
+			</script>
+	</section>
+</body>
+</html>
